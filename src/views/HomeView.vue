@@ -1,5 +1,19 @@
 <script setup>
-import { ref } from 'vue'
+import { ref, computed, onMounted, onUpdated, onUnmounted } from 'vue'
+
+onMounted(() => {
+  console.log('onMounted')
+  console.log(count.value)
+})
+
+onUpdated(() => {
+  console.log('onUpdated')
+  console.log(count.value)
+})
+
+onUnmounted(() => {
+  console.log('onUnmounted')
+})
 
 const count = ref(0)
 const title = ref('My Composition API')
@@ -20,6 +34,10 @@ const decrement = (number) => {
     count.value--
   }
 }
+
+const displayText = computed(() => {
+  return count.value > 5 ? 'Happy' : 'Unhappy'
+})
 </script>
 
 <template>
@@ -42,6 +60,7 @@ const decrement = (number) => {
       <label for="title-model">V-model: Counter</label>&nbsp;
       <input v-model="count" type="text" name="title-model" />
       <h3>{{ count }}</h3>
+      <h4>{{ displayText }}</h4>
     </div>
   </main>
 </template>
