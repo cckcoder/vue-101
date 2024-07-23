@@ -39,12 +39,8 @@ const title = ref('My Todo List')
           </div>
         </form>
         <hr />
-        <pre>
-        {{ todoStore.todos }}
-        </pre>
-        <!--
-        <TodoList :todos="todos" @delete-todo="deleteTodoItem" />
-      --></div>
+        <TodoList />
+      </div>
     </div>
   </div>
 </template>

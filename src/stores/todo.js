@@ -26,9 +26,15 @@ export const useTodoStore = defineStore('todo', () => {
     todos.value.push({ ...todoData })
     resetTodoData()
   }
+
+  const reverseTodos = computed(() => {
+    return todos.value.slice(0).reverse()
+  })
+
   return {
     todos,
     todoData,
+    reverseTodos,
     deleteTodoItem,
     submitTodoForm
   }
