@@ -2,6 +2,8 @@ import { ref, computed, reactive } from 'vue'
 import { defineStore } from 'pinia'
 
 export const useTodoStore = defineStore('todo', () => {
+  const todoId = ref(0)
+
   const todos = ref([
     { id: 1, title: 'Drink Coffee', description: 'Awesome' },
     { id: 2, title: 'Learn Vue3', description: 'I love vue3' },
@@ -31,10 +33,16 @@ export const useTodoStore = defineStore('todo', () => {
     return todos.value.slice(0).reverse()
   })
 
+  const getTodoById = computed(() => {
+    return todos.value.find((todo) => todo.id === todoId.value)
+  })
+
   return {
     todos,
     todoData,
     reverseTodos,
+    todoId,
+    getTodoById,
     deleteTodoItem,
     submitTodoForm
   }
