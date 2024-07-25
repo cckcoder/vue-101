@@ -3,6 +3,7 @@ import { defineStore } from 'pinia'
 
 export const useTodoStore = defineStore('todo', () => {
   const todoId = ref(0)
+  const notifyActive = ref(false)
 
   const todos = ref([
     { id: 1, title: 'Drink Coffee', description: 'Awesome' },
@@ -29,6 +30,21 @@ export const useTodoStore = defineStore('todo', () => {
     resetTodoData()
   }
 
+  const submitEditTodoForm = () => {
+    todos.value.map((todo) => {
+      if (todo.id === getTodoById.value.id) {
+        todo.title = getTodoById.value.title
+        todo.description = getTodoById.value.description
+      }
+    })
+
+    notifyActive.value = true
+
+    setInterval(() => {
+      notifyActive.value = false
+    }, 3000)
+  }
+
   const reverseTodos = computed(() => {
     return todos.value.slice(0).reverse()
   })
@@ -43,7 +59,9 @@ export const useTodoStore = defineStore('todo', () => {
     reverseTodos,
     todoId,
     getTodoById,
+    notifyActive,
     deleteTodoItem,
-    submitTodoForm
+    submitTodoForm,
+    submitEditTodoForm
   }
 })
