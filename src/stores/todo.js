@@ -7,7 +7,7 @@ export const useTodoStore = defineStore('todo', () => {
   const todos = ref([
     { id: 1, title: 'Drink Coffee', description: 'Awesome' },
     { id: 2, title: 'Learn Vue3', description: 'I love vue3' },
-    { id: 3, title: 'Learn Django REST', description: 'Learn Django REST' }
+    { id: 3, title: 'Learn Django REST', description: 'This is description of Learn Django REST' }
   ])
 
   const todoData = reactive({
