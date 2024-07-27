@@ -70,7 +70,7 @@ export async function createTodo(todo) {
 // Update an existing todo
 export async function updateTodo(id, todo) {
   try {
-    const response = await fetch(`${API_URL}/${id}`, {
+    const response = await fetch(`${API_URL}/${id}/`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json'
