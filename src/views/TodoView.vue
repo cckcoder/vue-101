@@ -1,10 +1,15 @@
 <script setup>
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 import TodoList from '@/components/TodoList.vue'
 import { useTodoStore } from '@/stores/todo.js'
 
 const todoStore = useTodoStore()
 const title = ref('My Todo List')
+
+// Fetch all todos when the component is mounted
+onMounted(() => {
+  todoStore.fetchAllTodos()
+})
 </script>
 
 <template>
