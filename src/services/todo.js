@@ -1,4 +1,4 @@
-const API_URL = 'http://localhost:8000/api/todo/';
+const API_URL = 'http://localhost:8000/api/todo';
 
 // Fetch all todos
 export async function fetchTodos() {
