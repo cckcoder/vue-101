@@ -1,24 +1,21 @@
 <script setup>
 import { onBeforeMount, ref } from 'vue'
 import { useTodoStore } from '@/stores/todo.js'
-import { useRouter, useRoute } from 'vue-router'
+import { useRoute } from 'vue-router'
 
-onBeforeMount(() => {
-  todoStore.todoId = parseInt(route.params.id)
-})
-
-const router = useRouter()
 const route = useRoute()
 const todoStore = useTodoStore()
-
-const goHomePage = () => router.push({ name: 'home' })
-const goPreviousPage = () => router.go(-1)
 const btnClass = ref(['button', 'is-primary'])
+
+onBeforeMount(() => {
+  todoStore.fetchTodo(parseInt(route.params.id))
+})
+
 </script>
 
 <template>
   <div>
-    <div v-if="todoStore.getTodoById.id">
+    <div v-if="todoStore.todoData.title">
       <div class="container">
         <div class="columns is-mobile">
           <div class="column is-half is-offset-one-quarter">
@@ -30,13 +27,13 @@ const btnClass = ref(['button', 'is-primary'])
               <div class="field">
                 <label class="label">Title</label>
                 <div class="control">
-                  <input class="input" type="text" v-model="todoStore.getTodoById.title" />
+                  <input class="input" type="text" v-model="todoStore.todoData.title" />
                 </div>
               </div>
               <div class="field">
                 <label class="label">Description</label>
                 <div class="control">
-                  <textarea class="textarea" v-model="todoStore.getTodoById.description">
+                  <textarea class="textarea" v-model="todoStore.todoData.body">
                   </textarea>
                 </div>
               </div>
