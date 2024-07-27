@@ -1,9 +1,10 @@
 <script setup>
 import { onBeforeMount, ref } from 'vue'
 import { useTodoStore } from '@/stores/todo.js'
-import { useRoute } from 'vue-router'
+import { useRouter, useRoute } from 'vue-router'
 
 const route = useRoute()
+const router = useRouter()
 const todoStore = useTodoStore()
 const btnClass = ref(['button', 'is-primary'])
 
@@ -11,6 +12,8 @@ onBeforeMount(() => {
   todoStore.fetchTodo(parseInt(route.params.id))
 })
 
+const goHomePage = () => router.push({ name: 'home' })
+const goPreviousPage = () => router.go(-1)
 </script>
 
 <template>
@@ -33,8 +36,7 @@ onBeforeMount(() => {
               <div class="field">
                 <label class="label">Description</label>
                 <div class="control">
-                  <textarea class="textarea" v-model="todoStore.todoData.body">
-                  </textarea>
+                  <textarea class="textarea" v-model="todoStore.todoData.body"> </textarea>
                 </div>
               </div>
               <div class="field">
