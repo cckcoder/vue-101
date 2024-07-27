@@ -1,5 +1,5 @@
 <script setup>
-import { onBeforeMount, ref } from 'vue'
+import { onBeforeMount, onBeforeUnmount, ref } from 'vue'
 import { useTodoStore } from '@/stores/todo.js'
 import { useRouter, useRoute } from 'vue-router'
 
@@ -10,6 +10,10 @@ const btnClass = ref(['button', 'is-primary'])
 
 onBeforeMount(() => {
   todoStore.fetchTodo(parseInt(route.params.id))
+})
+
+onBeforeUnmount(() => {
+  todoStore.resetTodoData()
 })
 
 const goHomePage = () => router.push({ name: 'home' })

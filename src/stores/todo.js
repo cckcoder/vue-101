@@ -108,6 +108,7 @@ export const useTodoStore = defineStore('todo', () => {
     submitTodoForm,
     submitEditTodoForm,
     fetchAllTodos,
-    fetchTodo
+    fetchTodo,
+    resetTodoData
   }
 })
