@@ -1,4 +1,4 @@
-const API_URL = 'http://localhost:8000/api/todo';
+const API_URL = 'http://localhost:8000/api/todo/';
 
 // Fetch all todos
 export async function fetchTodos() {
@@ -25,7 +25,7 @@ export async function fetchTodos() {
 // Fetch a single todo by ID
 export async function fetchTodoById(id) {
   try {
-    const response = await fetch(`${API_URL}/${id}`, {
+    const response = await fetch(`${API_URL}${id}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json'
@@ -70,7 +70,7 @@ export async function createTodo(todo) {
 // Update an existing todo
 export async function updateTodo(id, todo) {
   try {
-    const response = await fetch(`${API_URL}/${id}/`, {
+    const response = await fetch(`${API_URL}${id}/`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json'
@@ -93,7 +93,7 @@ export async function updateTodo(id, todo) {
 // Delete a todo
 export async function deleteTodo(id) {
   try {
-    const response = await fetch(`${API_URL}/${id}`, {
+    const response = await fetch(`${API_URL}${id}`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json'
