@@ -37,6 +37,14 @@ onBeforeMount(() => {
                   </textarea>
                 </div>
               </div>
+              <div class="field">
+                <div class="control is-flex is-align-items-center">
+                  <label class="checkbox">
+                    <input type="checkbox" v-model="todoStore.todoData.is_completed" />
+                    <span class="ml-2">Completed</span>
+                  </label>
+                </div>
+              </div>
               <button :class="btnClass">Submit Edit</button>
             </form>
           </div>
