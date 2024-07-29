@@ -1,10 +1,14 @@
 <script setup>
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 import TodoList from '@/components/TodoList.vue'
 import { useTodoStore } from '@/stores/todo.js'
 
 const todoStore = useTodoStore()
 const title = ref('My Todo List')
+
+onMounted(async () => {
+  await todoStore.retriveAllTodo()
+})
 </script>
 
 <template>
