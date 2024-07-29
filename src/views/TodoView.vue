@@ -32,7 +32,7 @@ onMounted(async () => {
             <label class="label">Description</label>
             <div class="control">
               <textarea
-                v-model="todoStore.todoData.description"
+                v-model="todoStore.todoData.body"
                 class="textarea"
                 placeholder="Description"
               ></textarea>
