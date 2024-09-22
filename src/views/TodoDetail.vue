@@ -3,21 +3,21 @@ import { onBeforeMount, onBeforeUnmount, ref } from 'vue'
 import { useTodoStore } from '@/stores/todo.js'
 import { useRouter, useRoute } from 'vue-router'
 
-const router = useRouter()
 const route = useRoute()
+const router = useRouter()
 const todoStore = useTodoStore()
-
-const goHomePage = () => router.push({ name: 'home' })
-const goPreviousPage = () => router.go(-1)
 const btnClass = ref(['button', 'is-primary'])
 
-onBeforeMount(async () => {
-  await todoStore.fetchTodo(parseInt(route.params.id))
+onBeforeMount(() => {
+  todoStore.fetchTodo(parseInt(route.params.id))
 })
 
 onBeforeUnmount(() => {
   todoStore.resetTodoData()
 })
+
+const goHomePage = () => router.push({ name: 'home' })
+const goPreviousPage = () => router.go(-1)
 </script>
 
 <template>
@@ -44,7 +44,7 @@ onBeforeUnmount(() => {
                 </div>
               </div>
               <div class="field">
-                <div class="control is-flex is-align-item-center">
+                <div class="control is-flex is-align-items-center">
                   <label class="checkbox">
                     <input type="checkbox" v-model="todoStore.todoData.is_completed" />
                     <span class="ml-2">Completed</span>

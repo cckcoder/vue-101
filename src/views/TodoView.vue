@@ -6,8 +6,9 @@ import { useTodoStore } from '@/stores/todo.js'
 const todoStore = useTodoStore()
 const title = ref('My Todo List')
 
-onMounted(async () => {
-  await todoStore.retriveAllTodo()
+// Fetch all todos when the component is mounted
+onMounted(() => {
+  todoStore.fetchAllTodos()
 })
 </script>
 
